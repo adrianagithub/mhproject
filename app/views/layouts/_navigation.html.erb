@@ -1,0 +1,26 @@
+<!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bd-navbar fixed-top">
+     <div class="container">
+    	<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
+            <li class='nav-item'>
+              <%= link_to landing_page_path, class: 'nav-link'  %>
+            </li>
+          </ul>
+           <ul class="navbar-nav ml-md-auto">
+        <li><% if user_signed_in? %>
+              <a class="disabled"><%= current_user.email %>  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link text-nowrap' %></a>
+            <%# (t'log_out') %>
+        </li>
+        <li>
+                <% else %>
+                  <a class="disabled"><%= link_to 'Sign In', new_user_session_path, class: 'nav-link text-nowrap' %></a>
+                <%# (t'log_in') %>
+            <% end %>
+          </li>
+        </ul>
+        </div>
+    </nav>
