@@ -14,9 +14,8 @@
  *= require_self
  *= require font-awesome
  */
+
  @import "font-awesome";
-
-
 
 #carouselExampleSlidesOnly.carousel.slide, .jumbo {
   width:  100%;
@@ -34,7 +33,6 @@ body {
   flex-direction: column;
   font-family: "Montserrat";
 
-  /* overflow-x: hidden; Prevent scroll on narrow devices */
 }
 main {
   padding-top: 40px;
@@ -128,11 +126,11 @@ a.btn.callout-button:hover {
   border-radius: 0.25rem;
   background-clip: padding-box;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  background-color: #1996aa !important;
+  background-color: #563d7c !important;
 }
 
 .card-header {
-  background-color: #1996aa !important;
+  background-color: #563d7c !important;
   padding: 0.3rem 0.25rem !important;
   border-radius: 0% !important;
 }
@@ -196,7 +194,7 @@ table.table a {
   display: block;
 }
 #sidebar ul li a:hover {
-  color: #1996aa !important;
+  color: #563d7c !important;
   background: #fff;
 }
 
