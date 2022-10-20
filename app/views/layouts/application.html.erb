@@ -24,10 +24,11 @@
   <header>
   <%= render 'layouts/navigation' %>
   </header>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+
   <body>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
   <footer>
     <%= render 'layouts/footer' %>
