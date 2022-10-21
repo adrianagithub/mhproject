@@ -49,8 +49,13 @@ class TherapistsController < ApplicationController
 
   # DELETE /therapists/1 or /therapists/1.json
   def destroy
-    @therapist.destroy
-
+    # set category and count
+    # category = @therapist.category
+    # @therapist.destroy
+    # if category.therapists.empty?
+    # count == 0
+    #   send email
+    # end
     respond_to do |format|
       format.html { redirect_to therapists_url, notice: "Therapist was successfully destroyed." }
       format.json { head :no_content }
@@ -65,6 +70,6 @@ class TherapistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def therapist_params
-      params.require(:therapist).permit(:first_name, :last_name, :kind, :phone_number, :url, :picture)
+      params.require(:therapist).permit(:first_name, :last_name, :kind, :phone_number, :url, :picture, :category_id)
     end
 end
