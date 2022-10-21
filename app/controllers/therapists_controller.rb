@@ -4,6 +4,7 @@ class TherapistsController < ApplicationController
   # GET /therapists or /therapists.json
   def index
     @therapists = Therapist.all
+    @count_therapist = Therapist.group(:category_id).count.sort_by {|_key, value| -value.to_i}
   end
 
   # GET /therapists/1 or /therapists/1.json
@@ -56,6 +57,8 @@ class TherapistsController < ApplicationController
     # count == 0
     #   send email
     # end
+    @count_therapist = Therapist.group(:category_id).count
+    
     respond_to do |format|
       format.html { redirect_to therapists_url, notice: "Therapist was successfully destroyed." }
       format.json { head :no_content }

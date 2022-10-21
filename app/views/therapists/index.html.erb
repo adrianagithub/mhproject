@@ -1,39 +1,71 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Therapists</h1>
+<div class="col-12 mr-auto">
+  <div id="no-more-tables" class="table-responsive card mb-5"> 
+    <div class="text-center card mb-5">
+      <table class="table table-hover" id="report">
+        <h1>Therapists</h1>
+        <thead class=“cf”>
+          <div class=“row”>
+            <tr>
+              <strong><th class=“h2” style=“background:none;“>First name</th></strong>
+              <th class=“h2” style=“background:none;“>Last name</th>
+              <th class=“h2” style=“background:none;“>Kind</th>
+              <th class=“h2” style=“background:none;“>Category</th>
+              <th class=“h2” style=“background:none;“>Phone number</th>
+              <th class=“h2” style=“background:none;“>Url</th>
+              <th class=“h2” style=“background:none;“>Picture</th>
+              <th colspan="3"></th>              
+            </tr>
+          </div>
+        </thead>
+        <tbody>
+          <% @therapists.each do |therapist| %>
+          <tr>
+            <td><%= therapist.first_name %></td>
+            <td><%= therapist.last_name %></td>
+            <td><%= therapist.kind %></td>
+            <td><%= therapist.category.name%></td>
+            <td><%= therapist.phone_number %></td>
+            <td><%= therapist.url %></td>
+            <td><%= therapist.picture %></td>
+            <td><%= link_to 'Show', therapist %></td>
+            <td><%= link_to 'Edit', edit_therapist_path(therapist) %></td>
+            <td><%= link_to 'Destroy', therapist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Kind</th>
-      <th>Category</th>
-      <th>Phone number</th>
-      <th>Url</th>
-      <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @therapists.each do |therapist| %>
-      <tr>
-        <td><%= therapist.first_name %></td>
-        <td><%= therapist.last_name %></td>
-        <td><%= therapist.kind %></td>
-        <th><%= therapist.category.name%></th>
-        <td><%= therapist.phone_number %></td>
-        <td><%= therapist.url %></td>
-        <td><%= therapist.picture %></td>
-        <td><%= link_to 'Show', therapist %></td>
-        <td><%= link_to 'Edit', edit_therapist_path(therapist) %></td>
-        <td><%= link_to 'Destroy', therapist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="col-12 mr-auto">
+  <div id="no-more-tables" class="table-responsive card mb-5"> 
+    <div class="text-center card mb-5">
+      <table class="table table-hover" id="report">
+        <thead class=“cf”>
+          <div class=“row”>
+            <tr>
+              <strong><th class=“h2” style=“background:none;“>Therapist category</th></strong>
+              <th class=“h2” style=“background:none;“>Total</th>
+            </tr>
+          </div>
+        </thead>
+        <tbody>
+          <% @count_therapist.each do |id, count| %>  
+            <tr>      
+              <td><%= Category.find(id).name%></td> 
+              <td><%= p count%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<br>
-
+<br>       
 <%= link_to 'New Therapist', new_therapist_path %>
+<br>
