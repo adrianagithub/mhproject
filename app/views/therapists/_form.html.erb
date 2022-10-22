@@ -1,52 +1,72 @@
-<%= form_with(model: therapist) do |form| %>
-  <% if therapist.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(therapist.errors.count, "error") %> prohibited this therapist from being saved:</h2>
+<div class="custom-container">
+  <div class="row no-gutter">
+    <%= form_with(model: therapist) do |form| %>
+      <% if therapist.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(therapist.errors.count, "error") %> prohibited this therapist from being saved:</h2>
+          <ul>
+            <% therapist.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group pl-4">
+        <div class="field">
+          <%= form.label :first_name %>
+          <%= form.text_field :first_name %>
+        </div>
+      </div>
 
-      <ul>
-        <% therapist.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="form-group pl-4">
+        <div class="field">
+          <%= form.label :last_name %>
+          <%= form.text_field :last_name %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+      <div class="form-group pl-4">
+        <div class="field">
+          <%= form.label :kind %>
+          <%= form.text_field :kind %>
+        </div>
+      </div>
+
+      <div class="form-group pl-4">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <%= form.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+          </div>
+        </div>
+
+      <div class="form-group pl-4">
+        <div class="field">
+          <%= form.label :phone_number %>
+          <%= form.text_field :phone_number %>
+        </div>
+      </div>
+
+      <div class="form-group pl-4">
+        <div class="field">
+          <%= form.label :url %>
+          <%= form.text_field :url %>
+        </div>
+      </div>
+
+      <div class="form-group pl-4">
+        <div class="field">
+          <%= form.label :picture %>
+          <%= form.text_field :picture %>
+        </div>
+      </div>
+
+      <div class="form-group pl-4">
+        <div class="actions">
+          <div class="row">
+            <%= form.submit %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :kind %>
-    <%= form.text_field :kind %>
-  </div>
-
-   <div class="form-group">
-      <label for="category">Category</label>
-      <%= form.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-    </div>
-
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :picture %>
-    <%= form.text_field :picture %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

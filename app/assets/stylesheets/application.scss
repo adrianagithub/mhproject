@@ -48,13 +48,17 @@ main {
   z-index: 999
 }
 
-a,
-a:link,
+a:link{
+  text-decoration: none;
+  color: white; 
+}
+
 a:visited,
 a:hover {
   text-decoration: none;
-  color: #212529;
+  color: grayscale($color: darkgray);
 }
+
 
 
 .user-container {
@@ -98,7 +102,7 @@ a:hover {
   font-size: 12px !important;
 }
 .button_filter:hover {
-  background-color: #212529 !important;
+  background-color: white !important;
 }
 
 a.btn.callout-button:hover {
@@ -111,7 +115,7 @@ a.btn.callout-button:hover {
 }
 .tooltip_button:hover{
   border: none;
-  color: black;
+  color: white;
   
 }
 .dropdowns_inputs {
@@ -311,9 +315,6 @@ a[aria-expanded="true"] {
   margin-right: auto;
 }
 
-body {
-
- }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;

@@ -1,34 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="custom-container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @therapist.first_name %>
-</p>
+  <p>
+    <strong>First name:</strong>
+    <%= @therapist.first_name %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @therapist.last_name %>
-</p>
+  <p>
+    <strong>Last name:</strong>
+    <%= @therapist.last_name %>
+  </p>
 
-<p>
-  <strong>Kind:</strong>
-  <%= @therapist.kind %>
-</p>
+  <p>
+    <strong>Kind:</strong>
+    <%= @therapist.kind %>
+  </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @therapist.phone_number %>
-</p>
+  <p>
+    <strong>Phone number:</strong>
+    <%= @therapist.phone_number %>
+  </p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @therapist.url %>
-</p>
+  <p>
+    <strong>Url:</strong>
+    <%= @therapist.url %>
+  </p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @therapist.picture %>
-</p>
+  <p>
+    <strong>Picture:</strong>
+    <%= @therapist.picture %>
+  </p>
 
-<%= link_to 'Edit', edit_therapist_path(@therapist) %> |
-<%= link_to 'Back', therapists_path %>
+  <%= link_to 'Edit', edit_therapist_path(@therapist), :class => 'btn btn-sm  btn-login btn-block  text-uppercase font-weight-bold mb-2' %> 
+  <%= link_to 'Back', therapists_path, :class => 'btn btn-sm  btn-login btn-block  text-uppercase font-weight-bold mb-2' %>
+</div>
