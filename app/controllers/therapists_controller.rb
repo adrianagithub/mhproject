@@ -50,18 +50,16 @@ class TherapistsController < ApplicationController
 
   # DELETE /therapists/1 or /therapists/1.json
   def destroy
-    # set category and count
-    # category = @therapist.category
-    # @therapist.destroy
-    # if category.therapists.empty?
-    # count == 0
-    #   send email
-    # end
-    @count_therapist = Therapist.group(:category_id).count
-    
-    respond_to do |format|
-      format.html { redirect_to therapists_url, notice: "Therapist was successfully destroyed." }
-      format.json { head :no_content }
+    category_id = @therapist.category_id
+    count = Therapist.where(category_id: category_id).count
+    if @therapist.destroy
+      if count == 1
+        # send email
+        NotherapistMailer.notherapist(current_user, @therapist).deliver
+      end  
+        redirect_to therapists_url, notice: "Therapist was successfully destroyed."
+    else
+        redirect_to therapists_url, notice: "Therapist could not be destroyed."
     end
   end
 
