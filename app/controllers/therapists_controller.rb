@@ -54,7 +54,7 @@ class TherapistsController < ApplicationController
     count = Therapist.where(category_id: category_id).count
     if @therapist.destroy
       if count == 1
-        # send email
+        # send email when we do not have more therapist of this kind
         NotherapistMailer.notherapist(current_user, @therapist).deliver
       end  
         redirect_to therapists_url, notice: "Therapist was successfully destroyed."
