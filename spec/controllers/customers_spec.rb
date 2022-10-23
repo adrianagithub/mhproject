@@ -4,7 +4,7 @@ RSpec.describe CustomersController do
   describe "GET #index" do
     subject { get :index }
 
-    it "renders the application layout" do
+    it "does not render a different layout" do
       expect(subject).to_not render_template("layouts/application")
     end
 	

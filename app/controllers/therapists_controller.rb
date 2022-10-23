@@ -1,4 +1,5 @@
 class TherapistsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
   before_action :set_therapist, only: %i[ show edit update destroy ]
 
   # GET /therapists or /therapists.json
@@ -72,5 +73,11 @@ class TherapistsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def therapist_params
       params.require(:therapist).permit(:first_name, :last_name, :kind, :phone_number, :url, :picture, :category_id)
+    end
+
+    def catch_not_found(e)
+      Rails.logger.debug("We had a not found exception.")
+      flash.alert = e.to_s
+      redirect_to therapists_path
     end
 end

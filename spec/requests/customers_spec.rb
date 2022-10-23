@@ -62,5 +62,51 @@ RSpec.describe "Customers", type: :request do
       expect(response).to redirect_to customer_path(id: Customer.last.id)
     end
   end
+  describe "post customers_path with invalid data" do
+    it "does not save a new entry and redirects to the new path for the customer" do
+      user = User.create(email: 'test@icloud.com', password: "password", password_confirmation: "password")
+      sign_in user
+      customer_attributes = FactoryBot.attributes_for(:customer)
+      customer_attributes.delete(:first_name)
+      expect { post customers_path, params: {customer: customer_attributes}
+    }.to_not change(Customer, :count)
+      expect(response.status).to render_template(:new)
+    end
+  end
+
+  describe "put customer_path with valid data" do
+    it "updates an entry and redirects to the show path for the customer" do
+      user = User.create(email: 'test@icloud.com', password: "Pa$$word20", password_confirmation: "Pa$$word20")
+      sign_in user
+      customer = FactoryBot.create(:customer)
+      put customer_path(id: customer.id), params: {customer:{first_name: "new", last_name: "new",
+        phone: "1234567890", email: "new@new.com"}}
+      customer.reload
+      expect(customer.first_name).to eq("new")
+      expect(response).to redirect_to customer_path(id: customer.id)
+    end
+  end
+
+  describe "put customer_path with invalid data" do
+    it "updates an entry and redirects to the edit path for the customer" do
+      user = User.create(email: 'test@icloud.com', password: "Pa$$word20", password_confirmation: "Pa$$word20")
+      sign_in user
+      customer = FactoryBot.create(:customer)
+      put customer_path(id: customer.id), params: {customer: {first_name: "", last_name: "", phone: "",email: ""}}
+      customer.reload
+      expect(customer.first_name).to_not eq("nil")
+      expect(response.status).to render_template(:edit)
+    end
+  end
+
+  describe "delete a customer record and redirects to the index path" do
+    it "deletes a customer record" do
+      user = User.create(email: 'test@icloud.com', password: "Pa$$word20", password_confirmation: "Pa$$word20")
+      sign_in user
+      customer = FactoryBot.create(:customer)
+      expect {delete customer_path(id: customer.id)}.to change(Customer, :count)
+      expect(response).to redirect_to customers_path
+     end
+  end
 
 end
