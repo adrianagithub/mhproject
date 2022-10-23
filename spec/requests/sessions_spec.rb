@@ -1,6 +1,5 @@
 require 'rails_helper'
-
-RSpec.describe "Users", type: :request do
+RSpec.describe "Sessions" do
   it "signs user in and out" do
     @user = FactoryBot.create(:user)
     sign_in @user
