@@ -1,33 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Customers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Phone number</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.first_name %></td>
-        <td><%= customer.last_name %></td>
-        <td><%= customer.phone_number %></td>
-        <td><%= customer.email %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Customer', new_customer_path %>
+<div class="col-12 mr-auto">
+  <div id="no-more-tables" class="table-responsive card mb-5"> 
+    <div class="text-center card mb-5">
+      <table class="table table-hover" id="report">
+        <h1>Customers</h1>
+        <thead class=“cf”>
+          <div class=“row”>
+            <tr>
+              <strong><th class=“h2” style=“background:none;“>First name</th>
+              <strong><th class=“h2” style=“background:none;“>Last name</th>
+              <strong><th class=“h2” style=“background:none;“>Phone number</th>
+              <strong><th class=“h2” style=“background:none;“>Email</th>
+              <th colspan="3"></th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <div class="row">
+            <tr>
+              <td><%= customer.first_name %></td>
+              <td><%= customer.last_name %></td>
+              <td><%= customer.phone_number %></td>
+              <td><%= customer.email %></td>
+              <td><%= link_to 'Show', customer %></td>
+              <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+              <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          </div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="actions center">
+  <%= link_to 'New Customer', new_customer_path,:class => 'btn btn-sm text-uppercase font-weight-bold mb-2' %>
+</div>
