@@ -58,6 +58,15 @@ a:hover {
   text-decoration: none;
   color: grayscale($color: darkgray);
 }
+.button {
+  text-decoration: none;
+  color: white;  
+}
+button:hover {
+  text-decoration: none;
+  color: grayscale($color: darkgray);
+}
+
 
 
 
@@ -95,8 +104,10 @@ a:hover {
 }
 
 .btn {
+
   border-radius: 0% !important;
 }
+
 .button_filter {
   color: white !important;
   font-size: 12px !important;
